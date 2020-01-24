@@ -8,7 +8,7 @@ import (
 )
 
 func build() (string, bool) {
-	buildLog("Building...")
+	buildLog("Building 2...")
 
 	//##RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o /go/bin/app
 
