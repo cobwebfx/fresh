@@ -12,7 +12,12 @@ func build() (string, bool) {
 
 	//##RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -installsuffix cgo -o /go/bin/app
 
-	cmd := exec.Command("CGO_ENABLED=0", "GOOS=linux", "GOARCH=amd64", "go", "build", "-o", buildPath(), root())
+	cmd := exec.Command("go", "build", "-o", buildPath(), root())
+	cmd.Env = append(os.Environ(),
+		"CGO_ENABLED=0",
+		"GOOS=linux",
+		"GOARCH=amd64",
+	)
 
 	stderr, err := cmd.StderrPipe()
 	if err != nil {
